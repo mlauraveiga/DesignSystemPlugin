@@ -1,0 +1,22 @@
+{
+  "name": "nebula.",
+  "version": "1.0.0",
+  "description": "Your Figma Plugin",
+  "main": "src/code.js",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "watch": "npm run build -- --watch"
+  },
+  "author": "",
+  "license": "",
+  "devDependencies": {
+    "@figma/plugin-typings": "^1.82.0",
+    "typescript": "*",
+    "webpack": "^5.89.0"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "ts-loader": "^9.5.1"
+  }
+}
