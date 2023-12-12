@@ -2,13 +2,13 @@
   "name": "Nebula.",
   "id": "1316403503006539472",
   "api": "1.0.0",
-  "main": "src/code.js",
+  "main": "dist/code.js",
+  "ui": "dist/ui.html",
   "capabilities": [],
   "enableProposedApi": false,
   "editorType": [
     "figma"
   ],
-  "ui": "src/ui.html",
   "networkAccess": {
     "allowedDomains": [
       "none"

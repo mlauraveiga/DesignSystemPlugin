@@ -2,21 +2,47 @@
   "name": "nebula.",
   "version": "1.0.0",
   "description": "Your Figma Plugin",
-  "main": "src/code.js",
+  "main": "src/code.tsx",
   "scripts": {
-    "build": "tsc -p tsconfig.json",
-    "watch": "npm run build -- --watch"
+    "build": "webpack --mode=production",
+    "build:watch": "webpack --mode=development --watch",
+    "prettier:format": "prettier --write '**/*.{js,jsx,ts,tsx,css,json}' "
   },
   "author": "",
   "license": "",
-  "devDependencies": {
-    "@figma/plugin-typings": "^1.82.0",
-    "typescript": "*",
-    "webpack": "^5.89.0"
-  },
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "ts-loader": "^9.5.1"
+    "react-router-dom": "^6.20.1"
+  },
+  "devDependencies": {
+    "@figma/plugin-typings": "^1.82.0",
+    "@types/react": "^18.2.43",
+    "@types/react-dom": "^18.2.17",
+    "css-loader": "^6.7.1",
+    "html-webpack-plugin": "^5.5.4",
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.3",
+    "prettier": "^2.7.1",
+    "react-dev-utils": "^12.0.1",
+    "sass": "^1.69.5",
+    "sass-loader": "^13.3.2",
+    "style-loader": "^3.3.1",
+    "ts-loader": "^9.3.1",
+    "typescript": "^4.7.4",
+    "url-loader": "^4.1.1",
+    "webpack": "^5.89.0",
+    "webpack-cli": "^5.1.4"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,ts,tsx,css,json}": [
+      "prettier --write",
+      "git add"
+    ]
   }
 }
