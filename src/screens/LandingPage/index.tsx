@@ -8,12 +8,19 @@ export const LandingPage = () => {
     const navigate = useNavigate();
 
     return (
-        <div className="box">
+        <div className="background">
             <Background />
-            <button onClick={ () => {
-                    navigate("/ds-menu-active");
-                }
-            } >Start</button>
+            <div className="content">
+                <div className="content_text">
+                    <h1>Nebula.</h1>
+                    <h2>Design Systems Manager</h2>
+                </div>
+                <div className="content_button">
+                    <button onClick={() => {
+                        navigate("/ds-menu-active");
+                    }}>Start</button>
+                </div>
+            </div>
         </div>
     );
 };

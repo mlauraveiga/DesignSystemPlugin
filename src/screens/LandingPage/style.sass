@@ -1,9 +1,52 @@
+@import '../../styles/variables.sass'
+$MARGIN: 100% / 12
 
-    
-.box
+.background
     & .intersect
-        height: 690px
+        height: 100‰
         left: 0
         position: fixed
         top: 0
-        width: 390px
+        width: 100%
+
+.content
+    width: 100% - $MARGIN * 2
+    position: absolute
+    top: 68%
+    left: $MARGIN
+    text-align: left
+
+    .content_text
+        align-items: flex-start
+        display: inline-flex
+        flex-direction: column
+        gap: 0px
+        position: relative
+        text-align: left
+        margin-bottom: 40px
+        color: #000000d1
+
+        h1
+            font-size: 52px
+            font-weight: 700
+            margin: 0
+            
+
+        h2
+            font-size: 16px
+            font-weight: 500
+            margin: 0
+
+    .content_button
+        width: 100%
+        text-align: center
+        box-sizing: border-box
+
+        button
+            font-family: $FONT-FAMILY
+            margin: 0
+            border: none
+            padding: 0 40px
+            height: 32px
+            border-radius: 6px
+            box-shadow: none
