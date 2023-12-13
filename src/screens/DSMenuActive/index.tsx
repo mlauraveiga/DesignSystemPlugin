@@ -1,7 +1,8 @@
 import React from 'react';
 import './DSMenuActive.sass';
-import Search from '../../components/Search';
-import IconPopUpButton from '../../components/Buttons/IconPopUpButton';
+import SearchBox from '../../components/Search';
+import PopUp from '../../components/PopUp_Down_Left';
+import MenuHamburger from '../../assets/icons/menuHamburger';
 
 function DSMenuActive() {
   const options1 = [
@@ -18,9 +19,9 @@ function DSMenuActive() {
   ]
 
   return (
-    <div>
-      <Search />
-      <IconPopUpButton options={options1} onClick={""} /> 
+    <div className='search_menu'>
+      <SearchBox />
+      <PopUp options={options1} onClick={() => {}} icon={<MenuHamburger />} />
     </div>
   );
 }

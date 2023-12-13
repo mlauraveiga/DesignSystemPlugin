@@ -35,10 +35,9 @@ module.exports = (env, argv) => ({
 
 
       // Allows you to use "<%= require('./file.svg') %>" in your HTML code to get a data URI
-      //{ test: /\.(png|jpg|gif|webp|svg)$/, loader: 'url-loader' },
-      // use files inside assets folder
       {
         test: /\.(png|jpg|gif|webp|svg)$/,
+        type: "asset/resource",
         loader: 'file-loader',
         options: {
           name: '[name].[ext]',

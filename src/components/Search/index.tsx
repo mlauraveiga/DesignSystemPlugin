@@ -2,7 +2,7 @@ import React from 'react';
 import IconSearch from '../../assets/icons/search';
 import './search.sass';
 
-const Search = () => {
+const SearchBox = () => {
     return (
         <div className='search_box'>
             <input type="text" className="search_input" value="Search..." />
@@ -13,4 +13,4 @@ const Search = () => {
     );
 }
 
-export default Search;
+export default SearchBox;

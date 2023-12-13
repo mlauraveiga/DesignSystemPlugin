@@ -1,7 +1,8 @@
 import React, { useRef } from "react";
 import { useState } from "react";
+import IconButton from "../Buttons/Icon";
 
-const IconPopUpButton = ({ options, onClick: customOnClick }) => {
+const PopUp = ({ options, onClick: customOnClick, icon }) => {
     const [isOpen, setIsOpen] = useState(false);
     const popRef = useRef<HTMLDivElement>(null);
 
@@ -21,7 +22,7 @@ const IconPopUpButton = ({ options, onClick: customOnClick }) => {
   
     return (
       <div>
-        <button onClick={customOnClick}>Open Popup</button>
+        <IconButton onClick={customOnClick} icon={icon} />
   
         {isOpen && (
           <div
@@ -41,4 +42,4 @@ const IconPopUpButton = ({ options, onClick: customOnClick }) => {
     );
   };
   
-  export default IconPopUpButton;
+  export default PopUp;

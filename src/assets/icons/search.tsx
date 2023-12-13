@@ -1,11 +1,11 @@
 import React from "react";
 
-const IconSearch = ({}) => {
+const Search = ({}) => {
     return (
-        <svg width="13" height="13" viewBox="0 0 12 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg width="12" height="12" viewBox="0 0 12 11" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path fillRule="evenodd" clipRule="evenodd" d="M9.19489 6.0809C8.03256 7.24323 6.14806 7.24323 4.98573 6.0809C3.8234 4.91858 3.8234 3.03407 4.98573 1.87174C6.14806 0.709418 8.03256 0.709418 9.19489 1.87174C10.3572 3.03407 10.3572 4.91858 9.19489 6.0809ZM4.54541 7.03192C6.10762 8.33609 8.43522 8.25478 9.90199 6.78801C11.4548 5.23516 11.4548 2.71749 9.90199 1.16464C8.34914 -0.388213 5.83147 -0.388213 4.27862 1.16464C2.87955 2.56371 2.741 4.74596 3.86297 6.30015L0 10.1631L0.707107 10.8702L4.54541 7.03192Z" fill="black" fillOpacity="0.8" />
         </svg>
     );
 }
 
-export default IconSearch;
+export default Search;
