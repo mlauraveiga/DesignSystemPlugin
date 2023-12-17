@@ -1,41 +1,40 @@
 import React from 'react';
 import './DSMenuActive.sass';
 import SearchBox from '../../components/Search';
-import PopUp from '../../components/PopUp';
-import MenuHamburger from '../../assets/icons/menuHamburger';
+import ContentMenu from '../../components/PopUpMenu/ContentMenu';
+import Dropdown from '../../components/Dropdown';
 
 function DSMenuActive() {
-  const options1 = [
+  const options = [
     {
-      id: 'option1',
-      title: 'Editor Mode',
-      toggle: true,
+      id: '1',
+      label: 'Alphabetical'
     },
     {
-      id: 'option2',
-      title: 'Change Design System',
+      id: '2',
+      label: 'Last Modified'
     },
     {
-      id: 'option3',
-      title: 'Make Request',
+      id: '3',
+      label: 'Last Created'
     },
-    {
-      id: 'option4',
-      title: 'Open on Website',
-    },
-    {
-      id: 'option5',
-      title: 'Report a Bug',
-    }
-  ]
+  ];
+
+  const handleSelect = (selectedValue) => {
+    console.log('Selected option:', selectedValue);
+  };
+
 
   return (
     <div>
-      <div className='search_menu'>
+      <div className='header'>
         <SearchBox />
-        <PopUp option={options1} onClick={() => { }} icon={<MenuHamburger />} />
+        <ContentMenu />
       </div>
-      <PopUp option={options1} onClick={() => { }} icon={<MenuHamburger />} />
+      <h1 className='title'>Design Systems</h1>
+      <div className='div_buttons' >
+        <Dropdown option={options} handleSelect={handleSelect} />
+      </div>
     </div>
   );
 }

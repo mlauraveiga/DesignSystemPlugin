@@ -1,0 +1,57 @@
+@import 'src/styles/variables.sass'
+
+.dropdown-container
+    font-family: $FONT_FAMILY
+    font-size: $TEXT-FONT-SIZE
+    font-weight: $TEXT-FONT-WEIGHT
+    border: none
+    outline: none
+    box-shadow: none
+    height: 24px
+
+    .dropdown-open
+        display: block
+        background-color: $COLOR-PRIMARY-WHITE
+        box-shadow: $BOX-SHADOW
+        border-radius: 4px
+        padding: 8px
+        margin-top: 4px
+        position: fixed
+        width: 124px
+
+    .dropdown-closed
+        display: none
+
+    .dropdown-option
+        padding: 8px 16px
+        cursor: pointer
+        user-select: none
+        margin: 0
+        padding: 6px 4px
+
+    .dropdown-option:hover
+        background-color: $COLOR-PRIMARY-LIGHTGREY
+        border-radius: 4px
+
+    .dropdown-button
+        width: 124px
+        height: 24px
+        text-align: left
+        font-family: $FONT_FAMILY
+        font-size: $TEXT-FONT-SIZE
+        font-weight: $TEXT-FONT-WEIGHT
+        padding: 4px 8px
+        background-color: none
+        display: inline-flex
+        position: relative
+
+    .dropdown-button-text
+        width: 85%
+
+    .dropdown-button-arrow
+        align-items: center
+        display: inline-flex
+        height: 100%
+        position: relative
+        left: 6px
+        stroke: $COLOR-PRIMARY-BLACK50
