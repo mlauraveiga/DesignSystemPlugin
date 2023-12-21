@@ -10,8 +10,8 @@
     "figma"
   ],
   "networkAccess": {
-    "allowedDomains": [
-      "none"
-    ]
+    "allowedDomains": ["none"],
+    "reasoning": "MyPlugin queries http://localhost:8000/designSystems/ for displaying the content of the design systems.",
+    "devAllowedDomains": ["http://localhost:8000/designSystems/"]
   }
 }

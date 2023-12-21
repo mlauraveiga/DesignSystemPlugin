@@ -3,19 +3,21 @@ import './dropdown.sass';
 import ArrowLineDown from '../../assets/icons/arrows/arrow-line-down';
 import ArrowLineUp from '../../assets/icons/arrows/arrow-line-up';
 
-const Dropdown = ({ option, handleSelect }) => {
+interface option {
+    id: string;
+    label: string;
+    selected?: boolean;
+}
+
+const Dropdown = ({ option, handleSelect } : { option: option[], handleSelect: Function }) => {
     const [isOpen, setIsOpen] = useState(false);
     const dropDownRef = useRef<HTMLDivElement>(null);
-    let selectedOption = option.find((option) => option.selected);
+    const selectedOption = (option: option) => {
+        option.selected = !option.selected;
+    }
 
     const firstOption = option.slice(0, 1);
     const [name, setName] = useState(null);
-
-    type option = {
-        id: string;
-        label: string;
-        selected?: boolean;
-    }
 
     const handleOpenDropdown = () => {
         setIsOpen(true);
@@ -55,7 +57,7 @@ const Dropdown = ({ option, handleSelect }) => {
                 {option.map((option) => (
                     <div
                         className={`dropdown-option ${option.selected ? 'selected' : ''}`}
-                        key={option.value}
+                        key={option.id}
                         onClick={() => handleSelectOption(option)}
                     >
                         {option.label}

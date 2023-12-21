@@ -8,12 +8,16 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "experimentalDecorators": true,
+    "skipLibCheck": true,
     "allowSyntheticDefaultImports": true,
     "removeComments": true,
     "noImplicitAny": false,
     "moduleResolution": "node",
     "typeRoots": ["./node_modules/@types", "./node_modules/@figma"],
     "noImplicitReturns": false,
-    "strictNullChecks": false
-  }
+    "strictNullChecks": false,
+    "resolveJsonModule": true,
+    "esModuleInterop": true
+  },
+  "include": ["src/", "src/index.d.ts"]
 }

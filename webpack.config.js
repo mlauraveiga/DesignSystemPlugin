@@ -38,6 +38,17 @@ module.exports = (env, argv) => ({
       {
         test: /\.(png|jpg|gif|webp|svg)$/,
         type: "asset/resource",
+        /*use: {
+          loader: 'file-loader',
+          options: {
+            name: '[name].[ext]',
+            outputPath: 'assets',
+          },
+        },
+        generator: {
+          filename: 'assets/[name][ext]',
+        }, 
+        test: /\.(png|jpg|gif|webp|svg|zip)$/, loader: [{ loader: 'url-loader' }] */
         loader: 'file-loader',
         options: {
           name: '[name].[ext]',
@@ -54,6 +65,7 @@ module.exports = (env, argv) => ({
   output: {
     filename: '[name].js',
     path: path.resolve(__dirname, 'dist'), // Compile into a folder called "dist"
+    publicPath: './',
   },
 
   // Tells Webpack to generate "ui.html" and to inline "ui.ts" into it

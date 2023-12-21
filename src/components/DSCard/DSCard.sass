@@ -1,0 +1,47 @@
+@import '../../styles/variables.sass'
+
+.cards-div
+    align-items: flex-start
+    display: inline-flex
+    flex-wrap: wrap
+    gap: 16px
+    position: relative
+    width: $GRID-COLUMN-SIZE * 22
+    
+
+.card
+    width: $GRID-COLUMN-SIZE * 10.446
+    display: block
+
+
+.card-image
+    background-color: $COLOR-PRIMARY-LIGHTGREY
+    border-radius: 4px
+    width: 100%
+    height: 108px
+    display: flex
+    margin-bottom: 4px
+
+    img
+        margin: auto auto
+        font-size: $TEXT-FONT-SIZE
+        font-weight: $TEXT-FONT-WEIGHT
+
+.card-image:hover
+    outline: 1.5px solid $COLOR-BLUE
+
+.card-content
+    display: inline-flex
+    flex-wrap: wrap
+    width: 100%
+    min-height: 24px
+
+    .card-title
+        font-size: $TEXT-FONT-SIZE
+        font-weight: $TEXT-FONT-WEIGHT
+        margin: auto 0
+        width: 86%
+
+    .card-button
+        display: inline-flex
+        width: 14%

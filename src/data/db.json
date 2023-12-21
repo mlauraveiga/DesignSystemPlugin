@@ -1,0 +1,22 @@
+{
+    "designSystems": [
+      {
+        "id": "1",
+        "title": "Atlassian",
+        "description": "Lorem ipsum que porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit.",
+        "image": "data:image/png;base64,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",
+        "dateOfCreation": "",
+        "active": "true",
+        "teamMembers": "Laura Veiga, João Silva, Pedro Santos, Ana Costa"
+      },
+      {
+        "id": "2",
+        "title": "Carbon Design System",
+        "description": "Lorem ipsum que porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit.",
+        "image": "src/assets/images/CarbonDS.png",
+        "dateOfCreation": "",
+        "active": "true",
+        "teamMembers": "Laura Veiga, João Silva, Ana Costa"
+      }
+    ]
+  }

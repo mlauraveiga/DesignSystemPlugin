@@ -6,9 +6,14 @@
     flex-direction: column
     justify-content: flex-end
     position: fixed
+    z-index: 1000
 
     button
         flex: 0 0 auto !important
+
+    button:hover
+        background-color: $COLOR-PRIMARY-LIGHTGREY
+        border-radius: 4px
 
 .popover
     background-color: $COLOR-PRIMARY-WHITE
@@ -19,8 +24,9 @@
     flex-direction: column
     padding: 8px
     margin-top: 8px
-    z-index: 1
-    width: max-content
+    z-index: 1000
+    width: max-content 
+    min-width: 80px
     position: relative
 
     .popover-box
