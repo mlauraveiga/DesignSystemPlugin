@@ -4,6 +4,7 @@ import { Routes, Route, MemoryRouter as Router } from "react-router-dom";
 import DSMenuActive from "./screens/DSMenuActive";
 import "./styles/style.sass";
 import ReportBug from "./screens/ReportBug";
+import DSMenuArchive from "./screens/DSMenuArchived";
 
 export default function App() {
     return (
@@ -13,6 +14,7 @@ export default function App() {
                     {/*<Route index element={<LandingPage />} />*/}
                     <Route index element={<DSMenuActive />} />
                     <Route path="/ds-menu-active" element={<DSMenuActive />} />
+                    <Route path="/ds-menu-archive" element={<DSMenuArchive />} />
                     <Route path="/report-bug" element={<ReportBug />} />
                 </Route>
                 <Route path="*" element={<DSMenuActive />} />

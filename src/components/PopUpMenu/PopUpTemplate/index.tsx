@@ -10,6 +10,7 @@ interface option {
   title: string;
   toggle?: boolean;
   path?: string;
+  delete?: boolean;
 }
 
 const PopUp = ({ option, icon, place }: { option: option[], icon: JSX.Element, place: string }) => {
@@ -63,7 +64,11 @@ const PopUp = ({ option, icon, place }: { option: option[], icon: JSX.Element, p
           {option.map((option) => (
             <div className="popover-box">
               {!option.toggle && (
-                <div className="popover-option" key={option.id} onClick={() => { navigate("/" + option.path); }} >
+                <div 
+                className={"popover-option" + (option.delete ? " delete" : "")} 
+                key={option.id} 
+                onClick={() => { navigate("/" + option.path); }} 
+                >
                   <p className="option" >
                     {option.title}
                   </p>
