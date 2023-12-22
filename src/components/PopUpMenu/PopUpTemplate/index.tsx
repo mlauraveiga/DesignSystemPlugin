@@ -11,9 +11,10 @@ interface option {
   toggle?: boolean;
   path?: string;
   delete?: boolean;
+  action?: Function;
 }
 
-const PopUp = ({ option, icon, place }: { option: option[], icon: JSX.Element, place: string }) => {
+const PopUp = ({ option, icon, place, optionAction }: { option: option[], icon: JSX.Element, place: string, optionAction?: Function }) => {
   const [isOpen, setIsOpen] = useState(false);
   const popRef = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
@@ -31,9 +32,9 @@ const PopUp = ({ option, icon, place }: { option: option[], icon: JSX.Element, p
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      console.log(popRef.current, event.target, !popRef.current?.contains(event.target as Node));
+      //console.log(popRef.current, event.target, !popRef.current?.contains(event.target as Node));
       if (!popRef.current.contains(event.target as Node)) {
-        console.log("click outside");
+        //console.log("click outside");
         handleClose();
       }
     };
@@ -44,8 +45,6 @@ const PopUp = ({ option, icon, place }: { option: option[], icon: JSX.Element, p
       document.removeEventListener("mousedown", handleClickOutside);
     };
   });
-
-  console.log(option);
 
   return (
     <div className={"buttonpopup " + place} ref={popRef} >
@@ -67,7 +66,12 @@ const PopUp = ({ option, icon, place }: { option: option[], icon: JSX.Element, p
                 <div 
                 className={"popover-option" + (option.delete ? " delete" : "")} 
                 key={option.id} 
-                onClick={() => { navigate("/" + option.path); }} 
+                onClick={() => { 
+                  if(option.path !== undefined){
+                  navigate("/" + option.path);
+                  } else if(option.action !== undefined){
+                  optionAction(option.action);
+                  }}} 
                 >
                   <p className="option" >
                     {option.title}

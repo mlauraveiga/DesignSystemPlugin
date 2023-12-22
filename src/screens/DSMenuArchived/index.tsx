@@ -10,10 +10,12 @@ const cardOptions = [
     {
         id: 'option1',
         title: 'Restore',
+        action: 'restore'
     },
     {
         id: 'option2',
         title: 'Delete',
+        action: 'delete',
         delete: true
     }
 ];
@@ -61,7 +63,13 @@ function DSMenuArchive() {
             {error}
             {isPending}
             {designSystems && <div className='cards'>
-                <DSCard cards={designSystems} isActive={true} options={cardOptions} sortOption={sortOption} searchQuery={searchQuery} />
+                <DSCard
+                    cards={designSystems}
+                    isActive={false}
+                    options={cardOptions}
+                    sortOption={sortOption}
+                    searchQuery={searchQuery}
+                />
             </div>}
 
         </div>

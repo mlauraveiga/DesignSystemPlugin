@@ -9,15 +9,16 @@ import DSActiveMenu from '../../components/PopUpMenu/DSActiveMenu';
 const cardOptions = [
   {
     id: 'option1',
-    title: 'Open',
+    title: 'Open'
   },
   {
     id: 'option2',
-    title: 'Details',
+    title: 'Details'
   },
   {
     id: 'option3',
     title: 'Archive',
+    action: 'archive'
   }
 ];
 
