@@ -57,7 +57,7 @@ const PopUp = ({ option, icon, place, optionAction }: { option: option[], icon: 
           className="popover"
           style={{
             opacity: isOpen ? 1 : 0, pointerEvents: isOpen ? "all" : "none",
-            visibility: isOpen ? "visible" : "hidden"
+            display: isOpen ? "block" : "none"
           }}
         >
           {option.map((option) => (

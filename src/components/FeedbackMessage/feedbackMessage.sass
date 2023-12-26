@@ -1,0 +1,59 @@
+@import '../../styles/variables.sass'
+
+.feedbackMessage
+    background-color: $COLOR-PRIMARY-WHITE
+    width: $GRID-COLUMN-SIZE * 22
+    padding: 16px
+    border-radius: 8px
+    position: fixed
+    top: 12px
+    left: $GRID-COLUMN-SIZE
+    z-index: 1000
+    box-shadow: $BOX-SHADOW
+
+    .feedbackMessage_content
+        align-items: flex-start
+        display: inline-flex
+        flex-direction: row
+        gap: 12px
+
+    .feedbackMessage_icon
+        display: inline-flex
+        margin: auto 0
+
+    .feedbackMessage_text
+        align-items: flex-start
+        display: inline-flex
+        flex-direction: column
+        gap: 4px
+        width: 90%
+
+        h2
+            margin: 0
+            font-size: $H2-FONT-SIZE
+            font-weight: $H2-FONT-WEIGHT
+            width: 92%
+
+        p
+            margin: 0
+            font-size: $SMALLTEXT-FONT-SIZE
+            font-weight: $TEXT-FONT-WEIGHT
+
+    .feedbackMessage_cross
+        position: absolute
+        top: 12px
+        right: 12px
+
+.success
+    border: 2px solid $COLOR-GREEN
+
+.warning
+    border: 2px solid $COLOR-YELLOW
+
+    
+.error
+    border: 2px solid $COLOR-RED
+
+.animation
+    transform: translateY(-150px)
+    transition: all ease-out .4s

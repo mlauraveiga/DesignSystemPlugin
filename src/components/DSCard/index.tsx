@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import "./DSCard.sass";
 import PopUp from "../PopUpMenu/PopUpTemplate";
 import ThreeDots from "../../assets/icons/threeDots";
+import PUW_DeleteDS from "../PopUpWindow/DeleteDS";
+import FeedbackMessage from "../FeedbackMessage";
 
 interface card {
     id: string;
@@ -28,106 +30,131 @@ const sortCards = (cards: card[], sortOption: string | null) => {
     }
 };
 
-const archiveDS = async (cards: card[], id: string) => {
-    try {
-        const response = await fetch(`http://localhost:8000/designSystems/${id}`, {
-            method: 'PATCH', // or 'PUT'
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ active: false }),
-        });
-
-        const updatedCard: card = await response.json();
-        const updatedCards = cards.map((card) => (card.id === id ? updatedCard : card));
-        console.log("Updated Cards: " + updatedCards);
-        return updatedCards;
-    }
-    catch (error) {
-        console.error('Error archiving design system:', error);
-        return cards;
-    }
-};
-
-const restoreDS = async (cards: card[], id: string) => {
-    try {
-        const response = await fetch(`http://localhost:8000/designSystems/${id}`, {
-            method: 'PATCH', // or 'PUT'
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ active: true }),
-        });
-
-        const updatedCard: card = await response.json();
-        const updatedCards = cards.map((card) => (card.id === id ? updatedCard : card));
-        console.log("Updated Cards: " + updatedCards);
-        return updatedCards;
-    }
-    catch (error) {
-        console.error('Error archiving design system:', error);
-        return cards;
-    }
-};
-
-const deleteDS = async (id: string) => {
-    try {
-        await fetch(`http://localhost:8000/designSystems/${id}`, {
-            method: 'DELETE',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        });
-
-        console.log("Card deleted successfully.");
-        // You might want to indicate success or handle it in your UI
-    } catch (error) {
-        console.error('Error deleting design system:', error);
-        // Handle errors or display an error message in your UI
-    }
-};
-
 const DSCard = ({ cards: initialCards, isActive, options, sortOption, searchQuery }: { cards: card[], isActive: boolean, options: any, sortOption: string | null, searchQuery: string }) => {
     const [sortedCards, setSortedCards] = useState(sortCards(initialCards, sortOption));
+    const [deletePopup, setDeletePopup] = useState(false);
+    const [cardToDelete, setCardToDelete] = useState<string | null>(null);
+    const [feedbackMessage, setFeedbackMessage] = useState(null);
 
     useEffect(() => {
         setSortedCards(sortCards(initialCards, sortOption));
     }, [initialCards, sortOption]);
 
+    const archiveDS = async (cards: card[], id: string) => {
+        try {
+            const response = await fetch(`http://localhost:8000/designSystems/${id}`, {
+                method: 'PATCH', // or 'PUT'
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ active: false }),
+            });
+
+            const updatedCard: card = await response.json();
+            const updatedCards = cards.map((card) => (card.id === id ? updatedCard : card));
+            console.log("Updated Cards: " + updatedCards);
+            setFeedbackMessage(<FeedbackMessage title='Design System Archived' text='You have successfully archived the design system.' type='Success' />);
+            return updatedCards;
+        }
+        catch (error) {
+            console.error('Error archiving design system:', error);
+            setFeedbackMessage(<FeedbackMessage title='Error archiving design system' text='The design system was not archived.' type='Error' />);
+            return cards;
+        }
+    };
+
+    const restoreDS = async (cards: card[], id: string) => {
+        try {
+            const response = await fetch(`http://localhost:8000/designSystems/${id}`, {
+                method: 'PATCH', // or 'PUT'
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ active: true }),
+            });
+
+            const updatedCard: card = await response.json();
+            const updatedCards = cards.map((card) => (card.id === id ? updatedCard : card));
+            console.log("Updated Cards: " + updatedCards);
+            setFeedbackMessage(<FeedbackMessage title='Design System Restored' text='You have successfully restored the design system.' type='Success' />);
+            return updatedCards;
+        }
+        catch (error) {
+            console.error('Error archiving design system:', error);
+            setFeedbackMessage(<FeedbackMessage title='Error restoring design system' text='The design system was not restored.' type='Error' />);
+            return cards;
+        }
+    };
+
+    const deleteDS = async (id: string) => {
+        try {
+            await fetch(`http://localhost:8000/designSystems/${id}`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+
+            console.log("Card deleted successfully.");
+            setFeedbackMessage(<FeedbackMessage title='Design System Deleted' text='You have successfully deleted the design system.' type='Success' />);
+        } catch (error) {
+            console.error('Error deleting design system:', error);
+            setFeedbackMessage(<FeedbackMessage title='Error deleting design system' text='The design system was not deleted.' type='Error' />);
+        }
+    };
+
+    useEffect(() => {
+        // Clear the feedback message after 4000 milliseconds (4 seconds)
+        const timeoutId = setTimeout(() => {
+            setFeedbackMessage(null);
+        }, 3000);
+
+        // Clear the timeout when the component unmounts or when the feedbackMessage changes
+        return () => clearTimeout(timeoutId);
+    }, [feedbackMessage]);
+
     const handleAction = async (cardId: string, selectedOptionId: string) => {
         const selectedOption = selectedOptionId;
-        console.log(selectedOption);
-      
+        console.log("Card to delete: " + cardId);
+
         switch (selectedOption) {
             case 'archive':
-              const updatedCardsArchive = await archiveDS(sortedCards, cardId);
-              setSortedCards(updatedCardsArchive);
-              break;
-      
+                const updatedCardsArchive = await archiveDS(sortedCards, cardId);
+                setSortedCards(updatedCardsArchive);
+                break;
+
             case 'restore':
-              const updatedCardsRestore = await restoreDS(sortedCards, cardId);
-              setSortedCards(updatedCardsRestore);
-              break;
-      
+                const updatedCardsRestore = await restoreDS(sortedCards, cardId);
+                setSortedCards(updatedCardsRestore);
+                break;
+
             case 'delete':
-              await deleteDS(cardId);
-              const updatedCardsDelete = sortedCards.filter((card) => card.id !== cardId);
-              setSortedCards(updatedCardsDelete);
-              break;
-      
+                //await deleteDS(cardId);
+                //const updatedCardsDelete = sortedCards.filter((card) => card.id !== cardId);
+                //setSortedCards(updatedCardsDelete);
+                setCardToDelete(cardId);
+                setDeletePopup(true);
+                break;
+
             default:
-              break;
-          }
-      };
-      
+                break;
+        }
+    };
 
+    const handleDeleteCancel = () => {
+        setDeletePopup(false);
+    };
 
-    //console.log("Cards: " + sortedCards.map((card) => card.active));
-    //console.log("Action: " + options[0].action);
-    //console.log("Action: " + options[1].action);
-   // console.log("ActionFind: " + options.find((option) => option.action === 'restore'));
-    //console.log("ActionMap: " + options.map((option) => option.action === 'restore'));
+    const handleDeleteConfirm = async () => {
 
+        await deleteDS(cardToDelete);
+        const updatedCardsDelete = sortedCards.filter((card) => card.id !== cardToDelete);
+        setSortedCards(updatedCardsDelete);
+
+        //setCardToDelete(null);
+
+        setDeletePopup(false);
+    };
 
     const renderCard = (card: card) => (
         <div className="card" key={card.id}>
@@ -143,8 +170,7 @@ const DSCard = ({ cards: initialCards, isActive, options, sortOption, searchQuer
                         icon={<ThreeDots />}
                         place="down left"
                         optionAction={(selectedOption) => {
-                            console.log(selectedOption);
-                            handleAction(card.id, selectedOption)
+                            handleAction(card.id, selectedOption);
                         }}
                     />
                 </div>
@@ -163,6 +189,16 @@ const DSCard = ({ cards: initialCards, isActive, options, sortOption, searchQuer
             ) : (
                 <p className="noMatch">No results found.</p>
             )}
+
+            {deletePopup && (
+                <PUW_DeleteDS
+                    isOpen={deletePopup}
+                    handleClose={handleDeleteCancel}
+                    deleteAction={handleDeleteConfirm}
+                />
+            )}
+
+            {feedbackMessage}
         </div>
     );
 };

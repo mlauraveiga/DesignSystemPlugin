@@ -5,6 +5,7 @@ import Dropdown from '../../components/Dropdown';
 import DSCard from '../../components/DSCard';
 import useFetch from '../../useFetch';
 import DSActiveMenu from '../../components/PopUpMenu/DSActiveMenu';
+import Plus from '../../assets/icons/plus';
 
 const cardOptions = [
   {
@@ -55,11 +56,15 @@ function DSMenuActive() {
     <div>
       <div className='header'>
         <SearchBox onSearch={handleSearch} />
-        <DSActiveMenu />
+        <div className='header_menu' ><DSActiveMenu /></div>
       </div>
       <h1 className='title'>Design Systems</h1>
       <div className='div_buttons' >
         <Dropdown option={dropdownOptions} handleSelect={handleSelect} />
+        <button className='create_button'>
+          <div className='create_button_icon'><Plus /></div>
+          <p className='create_button_text'>New Design System</p>
+        </button>
       </div>
 
       {error}

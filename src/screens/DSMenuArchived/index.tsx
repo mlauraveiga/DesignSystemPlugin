@@ -53,7 +53,7 @@ function DSMenuArchive() {
         <div>
             <div className='header'>
                 <SearchBox onSearch={handleSearch} />
-                <DSArchivedMenu />
+                <div className='header_menu' ><DSArchivedMenu /></div>
             </div>
             <h1 className='title'>Archived Design Systems</h1>
             <div className='div_buttons' >
