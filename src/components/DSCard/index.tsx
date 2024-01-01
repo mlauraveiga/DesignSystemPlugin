@@ -30,6 +30,25 @@ const sortCards = (cards: card[], sortOption: string | null) => {
     }
 };
 
+export const createDesignSystem = async (newDesignSystem) => {
+    try {
+        const response = await fetch('http://localhost:8000/designSystems', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(newDesignSystem),
+        });
+
+        const createdDesignSystem = await response.json();
+        return createdDesignSystem;
+    } catch (error) {
+        console.error('Error creating design system:', error);
+        throw error;
+    }
+};
+
+
 const DSCard = ({ cards: initialCards, isActive, options, sortOption, searchQuery }: { cards: card[], isActive: boolean, options: any, sortOption: string | null, searchQuery: string }) => {
     const [sortedCards, setSortedCards] = useState(sortCards(initialCards, sortOption));
     const [deletePopup, setDeletePopup] = useState(false);

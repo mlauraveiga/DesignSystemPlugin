@@ -6,6 +6,7 @@ import DSCard from '../../components/DSCard';
 import useFetch from '../../useFetch';
 import DSActiveMenu from '../../components/PopUpMenu/DSActiveMenu';
 import Plus from '../../assets/icons/plus';
+import CreateDS from '../../components/PopUpWindow/CreateDS';
 
 const cardOptions = [
   {
@@ -72,6 +73,8 @@ function DSMenuActive() {
       {designSystems && <div className='cards'>
         <DSCard cards={designSystems} isActive={true} options={cardOptions} sortOption={sortOption} searchQuery={searchQuery} />
       </div>}
+
+      <CreateDS />
 
     </div>
   );

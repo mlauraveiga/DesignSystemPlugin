@@ -72,6 +72,7 @@ module.exports = (env, argv) => ({
   plugins: [
     new HtmlWebpackPlugin({
       template: './src/ui.html',
+      externals: ['**/node_modules/**'],
       filename: 'ui.html',
       chunks: ['ui'],
       cache: false,

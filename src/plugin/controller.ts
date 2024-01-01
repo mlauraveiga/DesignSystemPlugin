@@ -1,28 +1,41 @@
 figma.showUI(__html__);
 
-figma.ui.resize(390,690);
+figma.ui.resize(390, 690);
 
-figma.ui.onmessage = (msg) => {
-  if (msg.type === 'create-rectangles') {
-    const nodes = [];
+console.clear();
 
-    for (let i = 0; i < msg.count; i++) {
-      const rect = figma.createRectangle();
-      rect.x = i * 150;
-      rect.fills = [{ type: 'SOLID', color: { r: 1, g: 0.5, b: 0 } }];
-      figma.currentPage.appendChild(rect);
-      nodes.push(rect);
-    }
+async function importVariablesAsync() {
+  const libraryCollections = await figma.teamLibrary.getAvailableLibraryVariableCollectionsAsync();
 
-    figma.currentPage.selection = nodes;
-    figma.viewport.scrollAndZoomIntoView(nodes);
+  const variablesInFirstLibrary = await figma.teamLibrary.getVariablesInLibraryCollectionAsync(libraryCollections[0].key);
 
-    // This is how figma responds back to the ui
-    figma.ui.postMessage({
-      type: 'create-rectangles',
-      message: `Created ${msg.count} Rectangles`,
-    });
-  }
+  const variableToImport = variablesInFirstLibrary.find((libVar) => libVar.resolvedType === 'FLOAT');
 
-  figma.closePlugin();
-};
+  const importedVariable = await figma.variables.importVariableByKeyAsync(variableToImport.key);
+
+  console.log(figma.teamLibrary.getVariablesInLibraryCollectionAsync("0"));
+  console.log(figma.importComponentByKeyAsync("1"));
+
+  console.log(figma.importComponentByKeyAsync("60d0c7a86277abd1155709c7980447cdfbd67780"));
+
+  return importedVariable;
+}
+//importVariablesAsync();
+
+async function importComponentAsync() {
+  console.log(await figma.teamLibrary.getAvailableLibraryVariableCollectionsAsync());
+  //console.log(await figma.teamLibrary.getVariablesInLibraryCollectionAsync(figma.teamLibrary.getAvailableLibraryVariableCollectionsAsync()[0].key));
+  console.log(await figma.importComponentByKeyAsync("60d0c7a86277abd1155709c7980447cdfbd67780"));
+
+  const collections = await figma.teamLibrary.getAvailableLibraryVariableCollectionsAsync();
+  const collectionObjects = collections.map((collection) => {
+    return {
+      name: collection.name,
+      key: collection.key,
+      libraryName: collection.libraryName,
+    };
+  });
+
+  console.log(collectionObjects[0]);
+}
+importComponentAsync();
