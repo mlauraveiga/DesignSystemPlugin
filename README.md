@@ -74,8 +74,6 @@ npm run build
 ```
 to build the project without hot reloads.
 
-3. This command will launch the React application in your default web browser.
-
 ## Conclusion
 Nebula aims to revolutionize the way design systems are created, managed, and utilized, fostering enhanced cooperation and productivity in the design workflow. We welcome contributions and suggestions to improve this project.
 
