@@ -1,40 +1,88 @@
-Below are the steps to get your plugin running. You can also find instructions at:
+# Nebula. - Figma Plugin
+![Bg](https://i.imgur.com/GATcWUT.png "Bg")
 
-  https://www.figma.com/plugin-docs/plugin-quickstart-guide/
+## Introduction
 
-This plugin template uses Typescript and NPM, two standard tools in creating JavaScript applications.
+Nebula is a groundbreaking Figma plugin designed to streamline design workflows and enhance collaboration between designers, developers, and stakeholders. In the rapidly evolving digital landscape, Nebula stands as a testament to the importance of design systems, offering a user-friendly solution to create, manage, and apply these systems effectively.
 
-First, download Node.js which comes with NPM. This will allow you to install TypeScript and other
-libraries. You can find the download link here:
+Nebula is divided into two main modes:
 
-  https://nodejs.org/en/download/
+1. **Viewer Mode**: Enables product designers to access and consult the design system.
+2. **Editor Mode**: Allows system designers to generate, document, and manage design systems.
 
-Next, install TypeScript using the command:
+This project also includes a simple webpage to promote and disseminate the plugin.
 
-  npm install -g typescript
+## Prerequisites
 
-Finally, in the directory of your plugin, get the latest type definitions for the plugin API by running:
+Before installing Nebula, ensure you have the following installed:
 
-  npm install --save-dev @figma/plugin-typings
+- [Node.js](https://nodejs.org/): A runtime environment for executing JavaScript code. Npm (Node Package Manager) is included and used for managing project dependencies.
 
-If you are familiar with JavaScript, TypeScript will look very familiar. In fact, valid JavaScript code
-is already valid Typescript code.
+## Installation
 
-TypeScript adds type annotations to variables. This allows code editors such as Visual Studio Code
-to provide information about the Figma API while you are writing code, as well as help catch bugs
-you previously didn't notice.
+Follow these steps to install and set up Nebula:
 
-For more information, visit https://www.typescriptlang.org/
+### Step 1: Clone the Repository
 
-Using TypeScript requires a compiler to convert TypeScript (code.ts) into JavaScript (code.js)
-for the browser to run.
+1. Open your terminal or command prompt.
+2. Navigate to the directory where you want to clone the project.
+3. Run the following command:
+   ```bash
+   git clone [repository URL]
+   ```
+*Replace [repository URL] with the URL of the Nebula GitHub repository.*
 
-We recommend writing TypeScript code using Visual Studio code:
+### Step 2: Navigate to the Project Directory
+1. Change directory to the cloned repository:
+```
+cd [project-name]
+```
+*Replace [project-name] with the name of the folder created by the cloning process.*
 
-1. Download Visual Studio Code if you haven't already: https://code.visualstudio.com/.
-2. Open this directory in Visual Studio Code.
-3. Compile TypeScript to JavaScript: Run the "Terminal > Run Build Task..." menu item,
-    then select "npm: watch". You will have to do this again every time
-    you reopen Visual Studio Code.
+### Step 3: Install Dependencies
+1. Within the project directory, run:
+```bash
+npm install
+```
+to install all the dependencies needed in the project.
 
-That's it! Visual Studio Code will regenerate the JavaScript file every time you save.
+## Setting Up Figma
+1. Open Figma Desktop Application.
+2. Click on the “Resources” button in the top bar.
+3. Select the “Plugins” option.
+4. Switch from “Recents and saved” to “Development”.
+5. Import the plugin using the manifest.json file from the project directory
+
+## Running the Application
+After setting up, you can start the application with the following steps:
+1. Simulate the database to use the mock data inside of the app:
+```bash
+npx json-server --watch src/data/db.json --port 8000
+```
+2. In the project directory, execute:
+```bash
+npm run build:watch
+```
+to run the project in "watch mode" this facilitates the hot reloads between figma and development
+or simply run:
+```bash
+npm start
+```
+or
+```bash
+npm run build
+```
+to build the project without hot reloads.
+
+## Conclusion
+Nebula aims to revolutionize the way design systems are created, managed, and utilized, fostering enhanced cooperation and productivity in the design workflow. We welcome contributions and suggestions to improve this project.
+
+**Happy Designing with Nebula!**
+
+------------
+
+*For more information or assistance, feel free to open an issue in the GitHub repository.
+
+[![License: AGPL v3](https://img.shields.io/badge/License-AGPL_v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
+
+*This README is structured to guide users through the installation and setup process, providing a clear and concise overview of the project and its functionalities. Feel free to modify or expand it as needed to fit your project's specific requirements or additional features.*
