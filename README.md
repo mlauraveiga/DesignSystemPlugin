@@ -42,7 +42,8 @@ cd [project-name]
 ### Step 3: Install Dependencies
 1. Within the project directory, run:
 ```bash
-npm install ```
+npm install
+```
 to install all the dependencies needed in the project.
 
 ## Setting Up Figma
@@ -56,7 +57,8 @@ to install all the dependencies needed in the project.
 After setting up, you can start the application with the following steps:
 1. Simulate the database to use the mock data inside of the app:
 ```bash
-npx json-server --watch src/data/db.json --port 8000```
+npx json-server --watch src/data/db.json --port 8000
+```
 2. In the project directory, execute:
 ```bash
 npm run build:watch
