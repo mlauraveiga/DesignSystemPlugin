@@ -73,6 +73,7 @@ or
 npm run build
 ```
 to build the project without hot reloads.
+
 3. This command will launch the React application in your default web browser.
 
 ## Conclusion
